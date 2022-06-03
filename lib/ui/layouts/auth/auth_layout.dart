@@ -32,6 +32,7 @@ class _MobileBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: bgColor,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -63,7 +64,7 @@ class _DesktopBody extends StatelessWidget {
       height: size.height * 0.95,
       color: bgColor,
       child: Row(children: [
-        const BackgroundLogin(),
+        const Expanded(child: BackgroundLogin()),
         Container(
           width: 600,
           height: double.infinity,

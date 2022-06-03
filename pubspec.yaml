@@ -36,6 +36,10 @@ dependencies:
   cupertino_icons: ^1.0.2
   fluro: ^2.0.3
   google_fonts: ^3.0.1
+  provider: ^6.0.3
+  email_validator: ^2.0.1
+  shared_preferences: ^2.0.15
+  dio: ^4.0.6
 
 dev_dependencies:
   flutter_test:
