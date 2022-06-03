@@ -5,8 +5,7 @@ class BackgroundLogin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: Container(
+    return Container(
       decoration: buildBoxDecoration(),
       child: Container(
         constraints: const BoxConstraints(maxWidth: 400),
@@ -14,18 +13,18 @@ class BackgroundLogin extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 30),
             child: Image(
-              image: AssetImage('image003.png'),
-              width: 300,
+              image: AssetImage('jugador-green.png'),
+              width: 250,
             ),
           ),
         ),
       ),
-    ));
+    );
   }
 
   BoxDecoration buildBoxDecoration() {
     return const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage('background01.jpg'), fit: BoxFit.cover));
+            image: AssetImage('luces-background.png'), fit: BoxFit.cover));
   }
 }

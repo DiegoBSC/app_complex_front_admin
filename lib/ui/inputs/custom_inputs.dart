@@ -1,3 +1,4 @@
+import 'package:app_web_admin_complex/ui/constants/constant.dart';
 import 'package:flutter/material.dart';
 
 class CustomInputs {
@@ -19,5 +20,16 @@ class CustomInputs {
         ),
         hintStyle: const TextStyle(color: Colors.grey),
         labelStyle: const TextStyle(color: Colors.grey));
+  }
+
+  static InputDecoration searchInputDecoration(
+      {required String hint, required IconData icon}) {
+    return InputDecoration(
+        border: InputBorder.none,
+        enabledBorder: InputBorder.none,
+        hintText: hint,
+        prefixIcon: Icon(icon, color: primaryColor),
+        labelStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
+        hintStyle: TextStyle(color: Colors.white.withOpacity(0.5)));
   }
 }
