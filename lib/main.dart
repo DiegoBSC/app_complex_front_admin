@@ -1,5 +1,6 @@
 import 'package:app_web_admin_complex/api/cafe_api.dart';
 import 'package:app_web_admin_complex/providers/auth_provider.dart';
+import 'package:app_web_admin_complex/providers/complex_provider.dart';
 import 'package:app_web_admin_complex/providers/sidemenu_provider.dart';
 import 'package:app_web_admin_complex/router/router.dart';
 import 'package:app_web_admin_complex/services/local_storage.dart';
@@ -32,6 +33,9 @@ class AppState extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => SideMenuProvider(),
           lazy: false,
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ComplexProvider(),
         ),
       ],
       child: const MyApp(),
@@ -67,6 +71,9 @@ class MyApp extends StatelessWidget {
         }
       },
       theme: ThemeData.light().copyWith(
+          textTheme: Theme.of(context).textTheme.apply(
+                bodyColor: Colors.white, //<-- SEE HERE
+              ),
           scrollbarTheme: const ScrollbarThemeData().copyWith(
               thumbColor:
                   MaterialStateProperty.all(Colors.grey.withOpacity(0.5)))),

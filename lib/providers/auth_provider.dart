@@ -18,7 +18,7 @@ class AuthProvider extends ChangeNotifier {
   }
 
   login(String termSearch, String password) {
-    CafeApi.hhtpPost('/public/app/v1/user/login/ADMIN',
+    CafeApi.httpPost('/public/app/v1/user/login/ADMIN',
         {"username": termSearch, "password": password}).then((value) {
       final authResponse = AuthResponse.fromMap(value);
       user = authResponse.userPresenter;
@@ -47,7 +47,7 @@ class AuthProvider extends ChangeNotifier {
       'status': 'ACT',
     };
 
-    CafeApi.hhtpPost('/public/app/v1/user/save', data).then((value) {
+    CafeApi.httpPost('/public/app/v1/user/save', data).then((value) {
       if (value == null) {
         return;
       }
@@ -55,7 +55,7 @@ class AuthProvider extends ChangeNotifier {
       NavegationService.replaceTo(Flurorouter.loginRoute);
       NotificationService.showSnackbarSuccess('OK: Usuario Creado');
     }).catchError((onError) {
-      NotificationService.showSnackbarError('Errorsssssss: $onError');
+      NotificationService.showSnackbarError('Error: $onError');
     });
   }
 
@@ -75,10 +75,9 @@ class AuthProvider extends ChangeNotifier {
 
     try {
       final response =
-          await CafeApi.hhtpGet('/public/app/v1/user/validateToken/ADMIN');
+          await CafeApi.httpGet('/public/app/v1/user/validateToken/ADMIN');
       final authResponse = AuthResponse.fromMap(response);
       LocalStorage.prefs.setString('token', authResponse.token);
-
       user = authResponse.userPresenter;
       authStatus = AuthStatus.authenticated;
       notifyListeners();

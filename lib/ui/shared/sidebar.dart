@@ -13,7 +13,7 @@ class SideBar extends StatelessWidget {
   const SideBar({Key? key}) : super(key: key);
 
   void navigateTo(String routeName) {
-    NavegationService.navigateTo(routeName);
+    NavegationService.replaceTo(routeName);
     SideMenuProvider.closeMenu();
   }
 
@@ -63,7 +63,7 @@ class SideBar extends StatelessWidget {
               text: 'Complejo',
               icon: Icons.add_business_outlined,
               isActive: false,
-              onPressed: () => print('Complejo')),
+              onPressed: () => navigateTo(Flurorouter.complexesRoute)),
           MenuItemCustom(
               text: 'Configuración',
               icon: Icons.settings,
