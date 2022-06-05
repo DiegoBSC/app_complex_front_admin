@@ -10,15 +10,20 @@ class CafeApi {
 
   static void configureDio() {
     //Url Base
-    //_dio.options.baseUrl = 'http://164.92.117.253:8080';
-    _dio.options.baseUrl = 'http://localhost:8080';
+    _dio.options.baseUrl = 'http://164.92.117.253:8080';
+    //_dio.options.baseUrl = 'http://127.0.0.1:8080';
 
     //Configuracion de Headers
-    _dio.options.headers = {'token': LocalStorage.prefs.get('token') ?? ''};
+    _dio.options.headers = {
+      'Authorization': LocalStorage.prefs.get('token') != null
+          ? 'Bearer ${LocalStorage.prefs.get('token')}'
+          : '',
+      'token': LocalStorage.prefs.get('token') ?? ''
+    };
   }
 
   // Metodo GET
-  static Future hhtpGet(String path) async {
+  static Future httpGet(String path) async {
     try {
       final resp = await _dio.get(path,
           options: Options(
@@ -34,7 +39,7 @@ class CafeApi {
   }
 
   // Metodo POST
-  static Future hhtpPost(String path, Map<String, dynamic> data) async {
+  static Future httpPost(String path, Map<String, dynamic> data) async {
     try {
       final resp = await _dio.post(path,
           data: data,

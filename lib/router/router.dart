@@ -35,6 +35,10 @@ class Flurorouter {
         handler: DashboardHandlers.bookings,
         transitionType: TransitionType.fadeIn);
 
+    router.define(complexesRoute,
+        handler: DashboardHandlers.complexes,
+        transitionType: TransitionType.fadeIn);
+
     //404
     router.notFoundHandler = NoPageFoundHandlers.noPageFound;
   }

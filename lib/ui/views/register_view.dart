@@ -153,7 +153,8 @@ class RegisterView extends StatelessWidget {
                     LinkText(
                       text: 'Ingresar',
                       onPressed: () {
-                        Navigator.pushNamed(context, Flurorouter.loginRoute);
+                        Navigator.pushReplacementNamed(
+                            context, Flurorouter.loginRoute);
                       },
                     )
                   ],
