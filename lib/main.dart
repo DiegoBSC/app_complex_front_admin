@@ -1,4 +1,4 @@
-import 'package:app_web_admin_complex/api/cafe_api.dart';
+import 'package:app_web_admin_complex/api/complex_api.dart';
 import 'package:app_web_admin_complex/providers/auth_provider.dart';
 import 'package:app_web_admin_complex/providers/complex_provider.dart';
 import 'package:app_web_admin_complex/providers/sidemenu_provider.dart';
@@ -14,7 +14,7 @@ import 'package:provider/provider.dart';
 
 void main() async {
   await LocalStorage.configurePrefs();
-  CafeApi.configureDio();
+  ComplexApi.configureDio();
   Flurorouter.configureRoutes();
   runApp(const AppState());
 }

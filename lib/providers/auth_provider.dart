@@ -1,4 +1,4 @@
-import 'package:app_web_admin_complex/api/cafe_api.dart';
+import 'package:app_web_admin_complex/api/complex_api.dart';
 import 'package:app_web_admin_complex/models/http/auth_response.dart';
 import 'package:app_web_admin_complex/router/router.dart';
 import 'package:app_web_admin_complex/services/local_storage.dart';
@@ -18,14 +18,14 @@ class AuthProvider extends ChangeNotifier {
   }
 
   login(String termSearch, String password) {
-    CafeApi.httpPost('/public/app/v1/user/login/ADMIN',
+    ComplexApi.httpPost('/public/app/v1/user/login/ADMIN',
         {"username": termSearch, "password": password}).then((value) {
       final authResponse = AuthResponse.fromMap(value);
       user = authResponse.userPresenter;
       LocalStorage.prefs.setString('token', authResponse.token);
       authStatus = AuthStatus.authenticated;
       NavegationService.replaceTo(Flurorouter.dashboardRoute);
-      CafeApi.configureDio();
+      ComplexApi.configureDio();
       notifyListeners();
     }).catchError((onError) {
       NotificationService.showSnackbarError('Error: Credenciales Inválidas');
@@ -47,7 +47,7 @@ class AuthProvider extends ChangeNotifier {
       'status': 'ACT',
     };
 
-    CafeApi.httpPost('/public/app/v1/user/save', data).then((value) {
+    ComplexApi.httpPost('/public/app/v1/user/save', data).then((value) {
       if (value == null) {
         return;
       }
@@ -75,7 +75,7 @@ class AuthProvider extends ChangeNotifier {
 
     try {
       final response =
-          await CafeApi.httpGet('/public/app/v1/user/validateToken/ADMIN');
+          await ComplexApi.httpGet('/public/app/v1/user/validateToken/ADMIN');
       final authResponse = AuthResponse.fromMap(response);
       LocalStorage.prefs.setString('token', authResponse.token);
       user = authResponse.userPresenter;

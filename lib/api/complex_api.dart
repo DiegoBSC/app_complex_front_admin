@@ -3,13 +3,14 @@ import 'package:app_web_admin_complex/services/local_storage.dart';
 import 'package:app_web_admin_complex/services/notification_service.dart';
 import 'package:dio/dio.dart';
 
-class CafeApi {
+class ComplexApi {
   static final Dio _dio = Dio();
 
   static void configureDio() {
     //Url Base
-    _dio.options.baseUrl = 'http://164.92.117.253:8080';
+    // _dio.options.baseUrl = 'http://164.92.117.253:8080';
     //_dio.options.baseUrl = 'http://127.0.0.1:8080';
+    _dio.options.baseUrl = 'https://complex-admin-backend.herokuapp.com';
 
     //Configuracion de Headers
     _dio.options.headers = {
