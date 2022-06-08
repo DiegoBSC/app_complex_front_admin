@@ -11,7 +11,7 @@ class Logo extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            'balon-green.png',
+            'assets/balon-green.png',
             width: 150,
             height: 150,
           ),

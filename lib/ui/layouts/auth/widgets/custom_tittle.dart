@@ -14,7 +14,7 @@ class CustomTittle extends StatelessWidget {
         FittedBox(
           fit: BoxFit.contain,
           child: Image.asset(
-            'balon-green.png',
+            'assets/balon-green.png',
             width: 150,
             height: 150,
           ),
