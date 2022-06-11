@@ -63,7 +63,7 @@ class _UserViewState extends State<UserView> {
             child: SizedBox(
           height: 400,
           child: Center(
-            child: Image(image: AssetImage('loader2.gif')),
+            child: Image(image: AssetImage('assets/loader2.gif')),
           ),
         )),
       if (user != null) _UserViewBody()
@@ -223,7 +223,8 @@ class _buildUserAvatar extends StatelessWidget {
     final image = (userFormProvider.user!.image == null)
         ? const Image(image: AssetImage('assets/no-image.png'))
         : FadeInImage.assetNetwork(
-            placeholder: 'loader2.gif', image: userFormProvider.user!.image!);
+            placeholder: 'assets/loader2.gif',
+            image: userFormProvider.user!.image!);
     return WhiteCard(
         child: SizedBox(
       width: double.infinity,

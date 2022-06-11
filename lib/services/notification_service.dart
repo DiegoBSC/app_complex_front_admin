@@ -37,7 +37,7 @@ class NotificationService {
           children: const [
             Center(
                 child: Image(
-              image: AssetImage('loader2.gif'),
+              image: AssetImage('assets/loader2.gif'),
               height: 50,
               width: 50,
             )),

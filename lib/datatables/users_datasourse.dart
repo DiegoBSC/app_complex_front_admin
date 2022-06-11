@@ -20,7 +20,7 @@ class UsersDataSource extends DataTableSource {
             height: 35,
           )
         : FadeInImage.assetNetwork(
-            placeholder: 'loader2.gif',
+            placeholder: 'assets/loader2.gif',
             image: user.image!,
             width: 35,
             height: 35,
