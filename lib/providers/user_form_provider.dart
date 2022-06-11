@@ -67,6 +67,7 @@ class UserFormProvider extends ChangeNotifier {
     try {
       final response = await ComplexApi.httpUploadFile(path, file);
       final responseModel = ResponseModel.fromMap(response);
+      print(responseModel.fieldUpdate);
       user!.image = responseModel.fieldUpdate;
       notifyListeners();
       return responseModel;
