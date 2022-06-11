@@ -6,13 +6,17 @@ class CustomOutlinedButton extends StatelessWidget {
   final String text;
   final Color color;
   final bool isFilled;
+  final IconData? icon;
+  final Color? colorIcon;
 
   const CustomOutlinedButton(
       {Key? key,
       required this.onPressed,
       required this.text,
+      this.icon,
       this.color = primaryColor,
-      this.isFilled = false})
+      this.isFilled = false,
+      this.colorIcon})
       : super(key: key);
 
   @override
@@ -27,10 +31,30 @@ class CustomOutlinedButton extends StatelessWidget {
         onPressed: () => onPressed(),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: Text(
-            text,
-            style: const TextStyle(fontSize: 16, color: primaryColor),
-          ),
+          child: icon == null
+              ? Text(
+                  text,
+                  style: const TextStyle(fontSize: 16, color: primaryColor),
+                )
+              : ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 100),
+                  child: Row(
+                    children: [
+                      Icon(
+                        icon,
+                        color: colorIcon != null ? colorIcon : null,
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        text,
+                        style:
+                            const TextStyle(fontSize: 16, color: primaryColor),
+                      )
+                    ],
+                  ),
+                ),
         ));
   }
 }

@@ -22,7 +22,7 @@ class SplashLayout extends StatelessWidget {
                   height: 20,
                 ),
                 Text(
-                  'Checking ...',
+                  'Cargando ...',
                   style: TextStyle(color: primaryColor, fontSize: 40),
                 )
               ]),

@@ -1,7 +1,11 @@
+import 'package:flutter/material.dart';
+
 import 'package:app_web_admin_complex/api/complex_api.dart';
 import 'package:app_web_admin_complex/providers/auth_provider.dart';
 import 'package:app_web_admin_complex/providers/complex_provider.dart';
 import 'package:app_web_admin_complex/providers/sidemenu_provider.dart';
+import 'package:app_web_admin_complex/providers/user_form_provider.dart';
+import 'package:app_web_admin_complex/providers/user_provider.dart';
 import 'package:app_web_admin_complex/router/router.dart';
 import 'package:app_web_admin_complex/services/local_storage.dart';
 import 'package:app_web_admin_complex/services/navegation_service.dart';
@@ -9,7 +13,6 @@ import 'package:app_web_admin_complex/services/notification_service.dart';
 import 'package:app_web_admin_complex/ui/layouts/auth/auth_layout.dart';
 import 'package:app_web_admin_complex/ui/layouts/dashboard/dashboard_layout.dart';
 import 'package:app_web_admin_complex/ui/layouts/splash/splash_layout.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
@@ -36,6 +39,12 @@ class AppState extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => ComplexProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => UserProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => UserFormProvider(),
         ),
       ],
       child: const MyApp(),

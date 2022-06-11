@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:app_web_admin_complex/api/complex_api.dart';
 import 'package:app_web_admin_complex/models/http/auth_response.dart';
+import 'package:app_web_admin_complex/models/http/complex_response.dart';
+import 'package:app_web_admin_complex/models/user_presenter_model.dart';
 import 'package:app_web_admin_complex/router/router.dart';
 import 'package:app_web_admin_complex/services/local_storage.dart';
 import 'package:app_web_admin_complex/services/navegation_service.dart';
@@ -12,6 +16,8 @@ class AuthProvider extends ChangeNotifier {
   //String? _token;
   AuthStatus authStatus = AuthStatus.checking;
   UserPresenter? user;
+  List<String>? complexUserIds = [];
+  List<ComplexResponse>? complexesResponse = [];
 
   AuthProvider() {
     isAuthenticated();
@@ -23,9 +29,16 @@ class AuthProvider extends ChangeNotifier {
       final authResponse = AuthResponse.fromMap(value);
       user = authResponse.userPresenter;
       LocalStorage.prefs.setString('token', authResponse.token);
+      ComplexApi.configureDio();
+      ComplexApi.httpGet('/v1/complex/user/${user!.id}').then((complexes) {
+        if (complexes != null && complexes!.isNotEmpty) {
+          complexesResponse = complexResponseFromMap(jsonEncode(complexes));
+          LocalStorage.prefs
+              .setString('complexSelected', jsonEncode(complexes![0]));
+        }
+      });
       authStatus = AuthStatus.authenticated;
       NavegationService.replaceTo(Flurorouter.dashboardRoute);
-      ComplexApi.configureDio();
       notifyListeners();
     }).catchError((onError) {
       NotificationService.showSnackbarError('Error: Credenciales Inválidas');
@@ -90,7 +103,7 @@ class AuthProvider extends ChangeNotifier {
   }
 
   logout() {
-    LocalStorage.prefs.remove('token');
+    LocalStorage.prefs.clear();
     authStatus = AuthStatus.notAuthenticated;
     notifyListeners();
   }

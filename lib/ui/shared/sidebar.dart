@@ -57,12 +57,13 @@ class SideBar extends StatelessWidget {
           MenuItemCustom(
               text: 'Usuarios',
               icon: Icons.person_add_alt_1_outlined,
-              isActive: false,
-              onPressed: () => print('Usuarios')),
+              isActive: sideMenuProvider.currentPage == Flurorouter.usersRoute,
+              onPressed: () => navigateTo(Flurorouter.usersRoute)),
           MenuItemCustom(
               text: 'Complejo',
               icon: Icons.add_business_outlined,
-              isActive: false,
+              isActive:
+                  sideMenuProvider.currentPage == Flurorouter.complexesRoute,
               onPressed: () => navigateTo(Flurorouter.complexesRoute)),
           MenuItemCustom(
               text: 'Configuración',

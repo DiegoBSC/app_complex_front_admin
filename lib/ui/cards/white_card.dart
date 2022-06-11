@@ -31,8 +31,11 @@ class WhiteCard extends StatelessWidget {
               ),
             ),
             Divider(color: primaryColor.withOpacity(0.2)),
+            const SizedBox(
+              height: 10,
+            )
           ],
-          child
+          SizedBox(width: double.infinity, child: child)
         ],
       ),
     );

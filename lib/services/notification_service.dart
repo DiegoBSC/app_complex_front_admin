@@ -26,4 +26,30 @@ class NotificationService {
 
     messageKey.currentState!.showSnackBar(snackBar);
   }
+
+  static showBusyIndicator(BuildContext context) {
+    final AlertDialog dialog = AlertDialog(
+      backgroundColor: secondaryColor.withOpacity(0.3),
+      content: SizedBox(
+        width: 100,
+        height: 150,
+        child: Column(
+          children: const [
+            Center(
+                child: Image(
+              image: AssetImage('loader2.gif'),
+              height: 50,
+              width: 50,
+            )),
+            Text(
+              'Cargando',
+              style: TextStyle(color: primaryColor, fontSize: 20),
+            )
+          ],
+        ),
+      ),
+    );
+
+    showDialog(context: context, builder: (_) => dialog);
+  }
 }

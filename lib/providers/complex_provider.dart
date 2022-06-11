@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:app_web_admin_complex/api/complex_api.dart';
-import 'package:app_web_admin_complex/models/http/auth_response.dart';
 import 'package:app_web_admin_complex/models/http/complex_response.dart';
+import 'package:app_web_admin_complex/models/user_presenter_model.dart';
 import 'package:flutter/material.dart';
 
 class ComplexProvider extends ChangeNotifier {

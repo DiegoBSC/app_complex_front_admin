@@ -32,4 +32,24 @@ class CustomInputs {
         labelStyle: TextStyle(color: Colors.white.withOpacity(0.5)),
         hintStyle: TextStyle(color: Colors.white.withOpacity(0.5)));
   }
+
+  static InputDecoration formInputDecoration({
+    required String hint,
+    required String label,
+    required IconData icon,
+  }) {
+    return InputDecoration(
+        border: OutlineInputBorder(
+            borderSide: BorderSide(color: primaryColor.withOpacity(0.3))),
+        enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: primaryColor.withOpacity(0.3))),
+        hintText: hint,
+        labelText: label,
+        prefixIcon: Icon(
+          icon,
+          color: Colors.grey,
+        ),
+        hintStyle: TextStyle(color: Colors.grey.withOpacity(0.7)),
+        labelStyle: TextStyle(color: Colors.grey.withOpacity(0.7)));
+  }
 }
